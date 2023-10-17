@@ -1,26 +1,31 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
- entry: './src/app.js',
- output: {
- path: path.resolve(__dirname, 'build'),
- filename: 'app.min.js',
- },
- target: 'web',
- module: {
- rules: [
-    {
+  entry: "./src/js/app.js",
+  output: {
+    path: path.resolve(__dirname, "build"),
+    filename: "app.min.js",
+  },
+  target: "web",
+  module: {
+    rules: [
+      {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-        }
- ]
- },
- plugins: [
+        use: "babel-loader",
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+  plugins: [
     new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html'
-        })
- ]
-}
+      template: "./src/index.html",
+      filename: "index.html",
+    }),
+  ],
+};
