@@ -5,4 +5,25 @@ export default class GitHubSDK {
         this.token = token;
         this.url = 'https://api.github.com';
     }         
+
+    // getUser(username) {
+    //     const url = `${this.url}/users/${username}`;
+
+    //     return fetch(url, {
+	// 		method: 'GET',
+	// 		headers: {
+	// 			Accept: 'application/vnd.github+json',
+	// 			Authorization: `token ${secret}`,
+	// 		},
+	// 	}).then((resp) => {
+	// 		if (resp.ok) {
+	// 			return resp.json();
+
+	// 		}
+	// 		return Promise.reject(resp);
+	// 	}).then(res => console.log(res))
+
+		
+    // }
+	
 }
