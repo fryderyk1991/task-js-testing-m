@@ -4,7 +4,7 @@ import './../css/style.css';
 document.addEventListener('DOMContentLoaded', init)
 
 function init () {
-    // const gh = new GitHubSDK();
+    const gh = new GitHubSDK('fryderyk1991', 'secret');
 
-    // const user = gh.getUser('fryderyk1991');
+    const user = gh.getUser('fryderyk1991');
 }

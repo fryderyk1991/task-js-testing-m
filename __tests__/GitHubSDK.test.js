@@ -28,11 +28,11 @@ describe("GitHubSdk", () => {
         expect(e).toBe(e);
       }
     });
-    it("show login of provied user", async () => {
-        const username = 'fryderyk1991';
-        const gh = new GitHubSDK();
-        const response = await gh.getUser(username)
-        expect(response.login).toBe(username)
+    it('should retrun user login', async () => {
+      expect.assertions(1);
+      const username = 'fryderyk1991';
+      const gh = new GitHubSDK();
+      return gh.getUser(username).then(data => expect(data.login).toBe(username))
     })
   });
 });
