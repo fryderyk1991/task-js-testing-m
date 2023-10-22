@@ -5,21 +5,25 @@ export default class GitHubSDK {
         this.url = 'https://api.github.com';
     }         
 
-    getUser(username) {
-        const url = `${this.url}/users/${username}`;
+		_fetch(options, additionalPath = '') {
+			const url = this.url + additionalPath;
 
-        return fetch(url, {
-			method: 'GET',
-			headers: {
-				Accept: 'application/vnd.github+json',
-				Authorization: `token ${this.token}`,
-			},
-		}).then((resp) => {
-			if (resp.ok) {
-				return resp.json();
+			return fetch(url, options)
+			.then(res => {
+				if(res.ok) {
+					return res.json()
+				}
+				return Promise.reject(res)
+			}).then(res => {return res})
+		}
+		getUser(username) {
+			const options = {
+				method: 'GET',
+				headers: {
+					Accept: 'application/vnd.github+json',
+					Authorization: `token ${this.token}`,
+				}
 			}
-			return Promise.reject(resp);
-		}).then(res => console.log(res))
-    }
-	
+			return this._fetch(options, `/users/${username}`)
+		}
 }
