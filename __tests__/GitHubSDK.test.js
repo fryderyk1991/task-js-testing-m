@@ -43,4 +43,26 @@ describe("GitHubSdk", () => {
       return gh.getUser(username).then(data => expect(data.name).toBe(userFullName))
     })
   });
+  describe('sendInvitation', () => {
+    it('should throw an error when task name is not defined', async () => {
+      const taskName = "";
+      const gh  = new GitHubSDK('fryderyk1991', secret);
+      expect.assertions(1);
+      try {
+        await gh.sendInvitation(taskName, 'edek1020');
+      } catch (e) {
+        expect(e).toBe(e);
+      }
+  })
+  it('should throw an error when user name is not defined', async () => {
+    const userName = "";
+    const gh  = new GitHubSDK('fryderyk1991', secret);
+    expect.assertions(1);
+    try {
+      await gh.sendInvitation('task-js-basics', userName);
+    } catch (e) {
+      expect(e).toBe(e);
+    }
+})
+  })
 });

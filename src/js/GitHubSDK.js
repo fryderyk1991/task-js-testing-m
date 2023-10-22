@@ -14,9 +14,12 @@ export default class GitHubSDK {
 					return res.json()
 				}
 				return Promise.reject(res)
-			}).then(res => {return res})
+			}).then(res => {
+				console.log(res);
+				return res;
+			})
 		}
-		getUser(username) {
+		getUser(user) {
 			const options = {
 				method: 'GET',
 				headers: {
@@ -24,6 +27,28 @@ export default class GitHubSDK {
 					Authorization: `token ${this.token}`,
 				}
 			}
-			return this._fetch(options, `/users/${username}`)
+			return this._fetch(options, `/users/${user}`)
 		}
+
+
+		sendInvitation(repoName, userName) {
+			if(!repoName) {
+				throw new Error('Pass repository name!!!')
+			}
+			if(!userName) {
+				throw new Error('Pass username!!!')
+			}
+				const options = {
+				method: 'PUT',
+				headers: {
+					Accept: 'application/vnd.github+json',
+					Authorization: `token ${this.token}`,
+				},
+				body: JSON.stringify({
+					permission: 'pull'
+				}),
+			}
+			return this._fetch(options, `/repos/${this.user}/${repoName}/collaborators/${userName}`);
+		}
+		
 }
