@@ -20,6 +20,9 @@ export default class GitHubSDK {
 			})
 		}
 		getUser(user) {
+			if(!user) {
+				throw new Error('User is not defined')
+			}
 			const options = {
 				method: 'GET',
 				headers: {
@@ -50,5 +53,4 @@ export default class GitHubSDK {
 			}
 			return this._fetch(options, `/repos/${this.user}/${repoName}/collaborators/${userName}`);
 		}
-		
 }

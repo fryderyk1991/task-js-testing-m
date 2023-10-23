@@ -54,7 +54,7 @@ describe("GitHubSdk", () => {
         expect(e).toBe(e);
       }
   })
-  it('should throw an error when user name is not defined', async () => {
+  it('should throw an error when username is not defined', async () => {
     const userName = "";
     const gh  = new GitHubSDK('fryderyk1991', secret);
     expect.assertions(1);

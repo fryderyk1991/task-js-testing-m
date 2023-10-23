@@ -7,5 +7,5 @@ function init () {
     const gh = new GitHubSDK('fryderyk1991', secret);
 
     // const user = gh.getUser('fryderyk1991');
-    const colabo = gh.sendInvitation('task-js-basics', 'fryderyk1991');
+    const collabo = gh.sendInvitation('practice-js-testing', 'agaja91')
 }
