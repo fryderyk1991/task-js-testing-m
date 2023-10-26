@@ -5,20 +5,20 @@ export default class GitHubSDK {
         this.url = 'https://api.github.com';
     }         
 
-		_fetch(options, additionalPath = '') {
-			const url = this.url + additionalPath;
+		// _fetch(options, additionalPath = '') {
+		// 	const url = this.url + additionalPath;
 
-			return fetch(url, options)
-			.then(res => {
-				if(res.ok) {
-					return res.json()
-				}
-				return Promise.reject(res)
-			}).then(res => {
-				console.log(res);
-				return res;
-			})
-		}
+		// 	return fetch(url, options)
+		// 	.then(res => {
+		// 		if(res.ok) {
+		// 			return res.json()
+		// 		}
+		// 		return Promise.reject(res)
+		// 	}).then(res => {
+		// 		console.log(res);
+		// 		return res;
+		// 	})
+		// }
 		getUser(user) {
 			if(!user) {
 				throw new Error('User is not defined')
